@@ -10,9 +10,8 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 app.use(express.static("public"));
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/onionpeeler", {
-    useNewUrlParser: true
-});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news-scraper";
+mongoose.connect(MONGODB_URI);
 
 //API Routes
 //Get Routes: all posts, posts id
