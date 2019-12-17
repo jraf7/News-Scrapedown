@@ -15,6 +15,11 @@ mongoose.connect(MONGODB_URI);
 
 //API Routes
 //Get Routes: all posts, posts id
+
+app.get("/", function (req, res){
+    res.sendFile("./public");
+})
+
 app.get("/scrape", function (req, res) {
     axios.get("https://www.theonion.com/").then(function (response) {
         let $ = cheerio.load(response.data);
@@ -46,19 +51,23 @@ app.get("/articles", function (req, res) {
         })
 });
 
-app.get("/articles/:id", function (req, res){
-    db.Article.findOne({
-        where: {
-            id: req.params.id
+app.get("/delete/:id", function(req, res){
+    db.Article.remove(
+        {
+            _id: mongojs.ObjectID(req.params.id)
+        },
+        function (error, remove) {
+            if (error) {
+                res.json(error);
+                console.log(error);
+            } else {
+                console.log(remove);
+                res.json(remove);
+            }
         }
-    })
-        .then(function(dbArticles){
-            res.json(dbArticles);
-        })
-        .catch(function(err){
-            res.json(err)
-        })
-})
+    )
+});
+
 
 app.put("/saved/:id", function (req, res) {
     db.Article.update(
