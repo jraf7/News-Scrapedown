@@ -17,7 +17,7 @@ mongoose.connect(MONGODB_URI);
 //Get Routes: all posts, posts id
 
 app.get("/", function (req, res){
-    res.sendFile("./public");
+    res.sendFile("./public/index.html");
 })
 
 app.get("/scrape", function (req, res) {
