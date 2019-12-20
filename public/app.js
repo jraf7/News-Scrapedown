@@ -1,9 +1,15 @@
 $("#scrape").on("click", function (event) {
     event.preventDefault();
+    onionScrape();
+})
+
+$("#render").on("click", function (event) {
+    event.preventDefault();    
+    $("#articles").empty();
     renderArticles();
 })
 
-$(".article-save").on("click", function(event){
+$(document).on("click", ".article-save", function(event){
     event.preventDefault();
     let post = $(this).attr(id);
     console.log("button clicked")
@@ -14,9 +20,12 @@ $(".article-save").on("click", function(event){
     });
 })
 
+function onionScrape () {
+    console.log("scrape")
+}
+
 function renderArticles() {
-    $("#article").empty();
-    $.getJSON("/articles", function (data) {
+    $.getJSON("/api/articles", function (data) {
         for (let i = 0; i < data.length; i++) {
             $("#articles").append(
                 `<div data-id='${data[i]._id}' class=" container bg-success mx-auto m-3">
@@ -33,4 +42,4 @@ function renderArticles() {
             );
         }
     });
-};
+};  

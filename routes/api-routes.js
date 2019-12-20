@@ -16,13 +16,13 @@ module.exports = function (app) {
                 result.image = $(this).parent().parent().parent().prev().children().children().children().children().attr("srcset");
                 
                 console.log(result.image);
-                // db.Article.create(result)
-                //     .then(function (dbArticle) {
-                //         console.log(dbArticle);
-                //     })
-                //     .catch(function (err) {
-                //         console.log(err)
-                //     });                  
+                db.Article.create(result)
+                    .then(function (dbArticle) {
+                        console.log(dbArticle);
+                    })
+                    .catch(function (err) {
+                        console.log(err)
+                    });                  
             })
             console.log("Scrape Completed")
             res.send("Scrape Complete");
