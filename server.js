@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news-scraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/onion-peeler";
 mongoose.connect(MONGODB_URI);
 
 require("./routes/api-routes")(app);

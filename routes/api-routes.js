@@ -5,7 +5,7 @@ let axios = require("axios");
 module.exports = function (app) {
 
     app.get("/scrape", function (req, res) {
-        console.log("starting ajax call")
+        console.log("Scrape Initialized")
         axios.get("https://www.theonion.com/search?blogId=1636079510")
         .then(function (response) {
             let $ = cheerio.load(response.data);
@@ -13,9 +13,7 @@ module.exports = function (app) {
                 let result = {};
                 result.title = $(this).text();
                 result.link = $(this).parent().attr("href");
-                result.image = $(this).parent().parent().parent().prev().children().children().children().children().attr("srcset");
-                
-                console.log(result.image);
+                // result.image = $(this).parent().parent().parent().prev().children().children().children().children().attr("srcset");
                 db.Article.create(result)
                     .then(function (dbArticle) {
                         console.log(dbArticle);
@@ -62,17 +60,6 @@ module.exports = function (app) {
             })
     });
 
-    app.get("/api/articles/saved/:id", function (req, res) {
-        db.Article.find( { saved: true, _id: req.params.id })
-            .populate("comments")
-            .then(function (dbArticle) {
-                res.json(dbArticle);
-            })
-            .catch(function(err) {
-                res.json(err);
-            })
-    });
-
     app.get("/api/delete/:id", function (req, res) {
         db.Article.remove({
                 _id: mongojs.ObjectID(req.params.id)
@@ -107,4 +94,4 @@ module.exports = function (app) {
     })
 
 
-}
+} 

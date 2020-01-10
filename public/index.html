@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,13 +17,28 @@
         <span class="navbar-text h1 mx-auto">
             The Onion Peeler
         </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="/"> Home <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link" href="/api/articles">Articles API</a>
+              <a class="nav-item nav-link" href="/api/articles/saved">Saved Articles</a>
+              <a class="nav-item nav-link " href="/scrape">Scrape</a>
+            </div>
+          </div>
     </nav>
 
     <div class="container text-center ">
         <br>
         <p class="lead">Bringing tears of joy, by scraping your reliable news outlet.</p>
-        <button id="scrape" href="/scrape">Scrape The Onion</button>
-        <button id="render" >Display Results</button>
+        <button id="scrape">
+            Scrape The Onion
+        </button>
+        <button id="saved">
+          Saved Articles
+        </button>
         <br>
         <hr>
     </div>
@@ -41,8 +55,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-
     <script src="app.js"></script>
+
+    
 </body>
 
 </html>

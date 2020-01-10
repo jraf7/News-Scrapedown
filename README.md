@@ -1,4 +1,5 @@
-# Onion Peeler
+# Onion Scraper
 
-Article scraping app for The Onion, America's Finest News Source.
+An article scraping app for The Onion, America's Most Reliable News Outlet.
     (https://www.theonion.com/)
+
